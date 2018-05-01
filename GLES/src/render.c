@@ -101,11 +101,11 @@ void RenderingBuffer_End(RenderingBuffer *buffer) {
 }
 
 
-inline Vertex *RenderingBuffer_CurrentVertex(RenderingBuffer *buffer) {
+Vertex *RenderingBuffer_CurrentVertex(RenderingBuffer *buffer) {
     return buffer->vertex + buffer->index;
 }
 
-inline VertexData *RenderingBuffer_CurrentVertexData(RenderingBuffer *buffer) {
+VertexData *RenderingBuffer_CurrentVertexData(RenderingBuffer *buffer) {
     return buffer->data + buffer->index;
 }
 

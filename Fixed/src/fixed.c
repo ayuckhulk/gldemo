@@ -29,7 +29,7 @@ inline fixed fixed_mul(fixed x, fixed y) {
 
 #endif
 
-inline fixed fixed_abs(fixed x) {
+fixed fixed_abs(fixed x) {
     return ((x) >= 0 ? (x) : -(x));
 }
 

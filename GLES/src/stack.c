@@ -76,10 +76,10 @@ void MatrixStack_MultMatrix(MatrixStack *stack, const mat4 *m) {
     stack->modified = GL_TRUE;
 }
 
-inline GLboolean MatrixStack_IsModified(MatrixStack *stack) {
+GLboolean MatrixStack_IsModified(MatrixStack *stack) {
     return stack->modified;
 }
 
-inline void MatrixStack_SetModified(MatrixStack *stack, GLboolean modified) {
+void MatrixStack_SetModified(MatrixStack *stack, GLboolean modified) {
     stack->modified = modified;
 }
