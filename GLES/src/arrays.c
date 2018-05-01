@@ -46,7 +46,7 @@ void Array_GetColor(Array *array, GLubyte *c) {
 }
 
 void Array_GetVector(Array *array, vec4 *v) {
-    GLuint i;
+    GLsizei i;
     v->p.z = fixed_int(0);
     v->p.w = fixed_int(1);
     switch (array->type) {
@@ -108,7 +108,7 @@ static inline GLfixed ConvertToNormalx(GLshort p) {
 }
 
 void Array_GetNormal(Array *array, vec3 *n) {
-    GLuint i;
+    GLsizei i;
     switch (array->type) {
     case GL_SHORT :
         for (i = 0;i < array->size;i++)

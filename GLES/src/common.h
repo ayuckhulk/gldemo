@@ -125,7 +125,7 @@ typedef struct {
     GLubyte *base;
     GLubyte *current;
 
-    GLint size;
+    GLsizei size;
     GLenum type;
     GLsizei stride;
 } Array;

@@ -319,18 +319,17 @@ Texture *gl_FindTexture(GLContext *context, GLuint id) {
 
 void glGenTextures (GLsizei n, GLuint *textures) {
     GLContext *context = gl_GetCurrentContext();
-    GLuint i, id;
-    GLuint max = 0;
-   
+    GLuint id;
+    GLsizei i;
+
     if (n < 0) {
         gl_SetError(context, GL_INVALID_VALUE);
         return;
     }
 
-    max = ~max;
     i = 0;
 
-    for (id = 1;id <= max;id++) {
+    for (id = 1; ;id++) {
         if (!gl_FindTexture(context, id)) {
             textures[i] = id;
             i++;
@@ -341,7 +340,7 @@ void glGenTextures (GLsizei n, GLuint *textures) {
 
 void glDeleteTextures (GLsizei n, const GLuint *textures) {
     GLContext *context = gl_GetCurrentContext();
-    GLuint i, j;
+    GLsizei i, j;
 
     if (n < 0) {
         gl_SetError(context, GL_INVALID_VALUE);
