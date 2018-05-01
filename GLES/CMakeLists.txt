@@ -2,23 +2,18 @@ cmake_minimum_required(VERSION 3.5)
 
 project(GLES_CL LANGUAGES C)
 
-add_executable(gen_div_table src/gen_div_table.c)
-target_include_directories(gen_div_table PRIVATE include)
-target_link_libraries(gen_div_table PRIVATE gl::fixed)
+find_package(PythonInterp 3 REQUIRED)
 
 add_custom_command(
-    OUTPUT ${GLES_CL_BINARY_DIR}/div_table.h
-    COMMAND $<TARGET_FILE:gen_div_table>
-    DEPENDS $<TARGET_FILE:gen_div_table>
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/div_table.h
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/gen_div_table.py > ${CMAKE_CURRENT_BINARY_DIR}/div_table.h
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/gen_div_table.py
 )
 
-add_executable(gen_rast_func src/gen_rast_func.c)
-target_include_directories(gen_rast_func PRIVATE include src)
-
 add_custom_command(
-    OUTPUT ${GLES_CL_BINARY_DIR}/rast_func.h
-    COMMAND $<TARGET_FILE:gen_rast_func>
-    DEPENDS $<TARGET_FILE:gen_rast_func>
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/rast_func.h
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/gen_rast_func.py > ${CMAKE_CURRENT_BINARY_DIR}/rast_func.h
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/gen_rast_func.py
 )
 
 add_library(GLES_CL STATIC
